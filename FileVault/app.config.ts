@@ -1,0 +1,73 @@
+// File: app.config.ts
+import { ExpoConfig, ConfigContext } from 'expo/config';
+
+export default ({ config }: ConfigContext): ExpoConfig => ({
+  ...config,
+  name: 'FileVault',
+  slug: 'filevault',
+  version: '1.0.0',
+  orientation: 'portrait',
+  icon: './assets/images/icon.png',
+  scheme: 'filevault',
+  userInterfaceStyle: 'automatic',
+  newArchEnabled: true,
+  splash: {
+    image: './assets/images/splash-icon.png',
+    resizeMode: 'contain',
+    backgroundColor: '#1A73E8',
+  },
+  ios: {
+    supportsTablet: true,
+    bundleIdentifier: 'com.filevault.app',
+    infoPlist: {
+      NSPhotoLibraryUsageDescription:
+        'FileVault needs access to your photo library to manage and preview images.',
+      NSDocumentsFolderUsageDescription:
+        'FileVault needs access to your documents folder to manage files.',
+      NSFileProtectionComplete: true,
+    },
+  },
+  android: {
+    adaptiveIcon: {
+      foregroundImage: './assets/images/adaptive-icon.png',
+      backgroundColor: '#1A73E8',
+    },
+    package: 'com.filevault.app',
+    permissions: [
+      'READ_EXTERNAL_STORAGE',
+      'WRITE_EXTERNAL_STORAGE',
+      'MANAGE_EXTERNAL_STORAGE',
+    ],
+  },
+  web: {
+    bundler: 'metro',
+    output: 'static',
+    favicon: './assets/images/favicon.png',
+  },
+  plugins: [
+    'expo-file-system',
+    [
+      'expo-media-library',
+      {
+        photosPermission:
+          'FileVault needs access to your photos to manage and preview them.',
+        savePhotosPermission:
+          'FileVault needs permission to save photos to your device.',
+        isAccessMediaLocationEnabled: true,
+      },
+    ],
+    [
+      'expo-document-picker',
+      {
+        iCloudContainerEnvironment: 'Production',
+      },
+    ],
+    'expo-sharing',
+    'expo-asset',
+  ],
+  extra: {
+    eas: {
+      projectId: 'your-project-id-here',
+    },
+  },
+});
