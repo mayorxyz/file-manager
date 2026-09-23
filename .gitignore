@@ -2,56 +2,51 @@
 # Dependencies
 node_modules/
 
-# Build outputs
+# Build artifacts
 dist/
 build/
-target/
+*.js.map
+*.ts.map
 
 # Environment variables
 .env
 .env.local
-.env.*
+*.env.*
 
-# IDE files
+# Editors
 .vscode/
 .idea/
 *.swp
 *.swo
-*.tmp
 
 # Logs
 *.log
 
-# Python specific
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-env/
-venv/
-.venv/
-.ENV
-.python-version
-
-# Coverage reports
+# Coverage
 coverage/
-htmlcov/
-.coverage
-
-# MyPy cache
-.mypy_cache/
-
-# Pytest cache
-.pytest_cache/
+.nyc_output/
+.jest/
 
 # Temporary files
 *.tmp
-*.temp
-*.bak
-
-# OS generated files
 .DS_Store
 Thumbs.db
+
+# Package manager
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Expo specific
+.expo/
+.expo-shared/
+web-build/
+
+# Test coverage
+__tests__/
+coverage/
+
+# TypeScript/JavaScript build output
+lib/
+out/
 ```.next/
-.next/
